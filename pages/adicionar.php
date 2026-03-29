@@ -1,3 +1,19 @@
+<?php $mensagem = ""; ?>
+
+<?php
+if (isset($_GET['status'])) {
+    if ($_GET['status'] == 'sucesso') {
+        $mensagem = '<div class="alert alert-success text-center" role="alert">
+                        Palavra cadastrada com sucesso!
+                     </div>';
+    } elseif ($_GET['status'] == 'erro') {
+        $mensagem = '<div class="alert alert-danger text-center" role="alert">
+                        Erro ao cadastrar palavra!
+                     </div>';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,15 +21,10 @@
     <title>WordVault - Cadastrar Palavra</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Seu CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-
-    <!-- Cabeçalho -->
     <nav class="navbar topbar py-3">
         <div class="container">
             <div>
@@ -23,9 +34,10 @@
         </div>
     </nav>
 
-    <!-- Conteúdo -->
     <div class="card main-card">
         <div class="card-body">
+
+            <?php echo $mensagem; ?>
 
             <div class="text-center mb-4">
                 <h1 class="section-title">Cadastrar nova palavra</h1>
@@ -34,7 +46,7 @@
                 </p>
             </div>
 
-            <form action="" method="POST">
+            <form action="../actions/salvar.php" method="POST">
                 <div class="row g-4">
                     <div class="col-md-6">
                         <div class="answer-box">
@@ -44,6 +56,7 @@
                                 name="ingles" 
                                 class="form-control" 
                                 placeholder="Digite a palavra em inglês"
+                                required
                             >
                         </div>
                     </div>
@@ -56,6 +69,7 @@
                                 name="portugues" 
                                 class="form-control" 
                                 placeholder="Digite a tradução em português"
+                                required
                             >
                         </div>
                     </div>
