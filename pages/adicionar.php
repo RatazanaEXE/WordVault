@@ -112,6 +112,13 @@ if (isset($_GET['status'])) {
 
         </div>
     </div>
+    <!-- Esconder alerta -->
+<script>
+setTimeout(() => {
+    const alert = document.querySelector('.alert');
+    if (alert) alert.style.display = 'none';
+}, 1000);
+</script>
 
 </body>
 </html>
